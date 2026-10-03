@@ -1,0 +1,33 @@
+import Image from "next/image";
+
+const Header = () => {
+
+    const date = new Date().toLocaleDateString("bn-bd", {
+        dateStyle: "full"
+    });
+
+
+    return (
+        <div className="container mx-auto grid items-center gap-4 px-4 py-4 md:grid-cols-[1fr_auto_1fr]">
+            <div className="flex items-center justify-self-center gap-3 md:col-start-2">
+                <Image
+                    src="/logo.webp"
+                    alt="Logo"
+                    width={50}
+                    height={50}
+                />
+                <div>
+                    <span className="font-bold text-2xl text-red-700">Bangla News24</span>
+                    <div>{date}</div>
+                </div>
+            </div>
+            <div className="flex justify-self-end gap-2 md:col-start-3">
+                <button className="btn">সাইন ইন</button>
+                <button className="btn bg-red-700 text-white">সাইন আপ</button>
+            </div>
+            
+        </div>
+    );
+};
+
+export default Header;

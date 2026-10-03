@@ -1,9 +1,8 @@
-import Image from "next/image";
-
+import Marquee from "../components/Marquee";
 export default function Home() {
   return (
    <div>
-    <h1>Hello</h1>
+    <Marquee />
    </div>
   );
 }
