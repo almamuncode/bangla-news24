@@ -23,8 +23,8 @@ const MainNews = ({ news }: MainNewsProps) => {
                 loading="eager"
             />
             <div className="other-news grid auto-rows-fr gap-4">
-                {otherNews.slice(0, 4).map((article, index) => (
-                    <Card key={index} article={article} showImage={false} showDescription={false} />
+                {otherNews.slice(0, 4).map((article) => (
+                    <Card key={article.id} article={article} showImage={false} showDescription={false} />
                 ))}
             </div>
         </div>

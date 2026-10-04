@@ -1,4 +1,5 @@
 export type NewsArticle = {
+    id: string;
     title: string;
     description: string;
     category: string;
@@ -16,5 +17,5 @@ export type NewsSectionsResponse = {
 };
 
 export type NewsResponse = {
-    data: Pick<NewsArticle, "title">[];
+    data: Pick<NewsArticle, "id" | "title">[];
 };

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import MarqueeText from "react-marquee-text"
 import "react-marquee-text/dist/styles.css"
 
@@ -13,8 +14,8 @@ const Marquee = async () => {
             <div className="container mx-auto flex items-center">
                 <div className="font-bold py-2 bg-red-800 px-2">সর্বশেষ</div>
                 <MarqueeText direction="right" duration={15}>
-                    {headlines.map((headline, index) => (
-                        <span key={index}><span className="font-bold">{headline.title}</span>
+                    {headlines.map((headline) => (
+                        <span key={headline.id}><Link href={`/news/${encodeURIComponent(headline.id)}`} className="font-bold hover:underline focus-visible:outline-2 focus-visible:outline-white">{headline.title}</Link>
                             <span className="mx-2"> ● </span></span>
                     ))}
                 </MarqueeText>

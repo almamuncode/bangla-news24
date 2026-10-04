@@ -1,6 +1,7 @@
 import Image from "next/image";
 import CardDescription from "@/components/CardDescription";
 import type { NewsArticle } from "@/types/news";
+import Link from "next/link";
 
 type CardProps = {
     article: NewsArticle;
@@ -16,7 +17,8 @@ const Card = ({ article, showImage = true, showDescription = true, loading }: Ca
     return (
     <div className="card h-full min-w-0 bg-base-100 shadow-sm">
         {showImage && (
-            <figure className="aspect-video w-full shrink-0 overflow-hidden bg-base-200">
+            <Link href={`/news/${encodeURIComponent(article.id)}`} aria-label={article.title} className="block shrink-0 focus-visible:outline-2 focus-visible:outline-red-700">
+            <figure className="aspect-video w-full overflow-hidden bg-base-200">
                 {article.imageUrl && <Image
                     src={article.imageUrl}
                     alt={article.title}
@@ -26,6 +28,7 @@ const Card = ({ article, showImage = true, showDescription = true, loading }: Ca
                     className="h-full w-full object-cover"
                 />}
             </figure>
+            </Link>
         )}
         <div className="card-body [&>p]:grow-0">
             <p className="text-sm text-red-500">{article.category}</p>
@@ -39,7 +42,7 @@ const Card = ({ article, showImage = true, showDescription = true, loading }: Ca
                     })}
                 </time>
             )}
-            <h2 className="card-title line-clamp-2 min-h-14 leading-7" title={article.title}>{article.title}</h2>
+            <h2 className="card-title line-clamp-2 min-h-14 leading-7" title={article.title}><Link href={`/news/${encodeURIComponent(article.id)}`} className="hover:text-red-700 hover:underline focus-visible:outline-2 focus-visible:outline-red-700">{article.title}</Link></h2>
             {showDescription && <CardDescription key={article.description} description={article.description} />}
         </div>
     </div>

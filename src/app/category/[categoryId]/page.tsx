@@ -3,6 +3,7 @@ import type { NewsArticle } from "@/types/news";
 
 type CategoryResponse = {
     title: string;
+    id: string;
     data: (NewsArticle & { id: string | number })[];
 };
 
