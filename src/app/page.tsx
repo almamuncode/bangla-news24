@@ -4,6 +4,11 @@ import type { NewsSectionsResponse } from "@/types/news";
 import MostRead from "../components/MostRead";
 import SelectedNews from "../components/SelectedNews";
 
+const hiddenSections = new Set([
+  "বিবিসি বাংলা এখন হোয়াটসঅ্যাপে!",
+  "বিবিসি বাংলা এখন ইন্সটাগ্রামে!",
+  "সামাজিক মাধ্যমে বিবিসি বাংলা",
+].map((title) => title.normalize("NFC").trim()));
 
 
 
@@ -12,7 +17,9 @@ export default async function Home() {
   const res = await fetch("https://news-api-v2.vercel.app/api/news/sections");
   const data: NewsSectionsResponse = await res.json();
   console.log(data);
-  const sections = data.data;
+  const sections = data.data.filter(
+    (section) => !hiddenSections.has(section.title.normalize("NFC").trim()),
+  );
   const mainNews = sections[0]?.articles ?? [];
   const mostRead = sections[1]?.articles ?? [];
   const selected = sections.slice(1) ?? [];
