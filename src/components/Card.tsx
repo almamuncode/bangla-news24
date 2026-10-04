@@ -13,6 +13,7 @@ type CardProps = {
 const Card = ({ article, showImage = true, showDescription = true, loading }: CardProps) => {
     const publishedDate = article.firstPublished ? new Date(article.firstPublished) : null;
     const validPublishedDate = publishedDate && !Number.isNaN(publishedDate.getTime()) ? publishedDate : null;
+    const compact = !showImage && !showDescription;
 
     return (
     <div className="card h-full min-w-0 bg-base-100 shadow-sm">
@@ -30,7 +31,7 @@ const Card = ({ article, showImage = true, showDescription = true, loading }: Ca
             </figure>
             </Link>
         )}
-        <div className="card-body [&>p]:grow-0">
+        <div className={`card-body [&>p]:grow-0 ${compact ? "gap-2 p-4 sm:p-5" : ""}`}>
             <p className="text-sm text-red-500">{article.category}</p>
             {validPublishedDate && (
                 <time dateTime={validPublishedDate.toISOString()} className="text-xs text-base-content/60">
@@ -42,7 +43,7 @@ const Card = ({ article, showImage = true, showDescription = true, loading }: Ca
                     })}
                 </time>
             )}
-            <h2 className="card-title line-clamp-2 min-h-14 leading-7" title={article.title}><Link href={`/news/${encodeURIComponent(article.id)}`} className="hover:text-red-700 hover:underline focus-visible:outline-2 focus-visible:outline-red-700">{article.title}</Link></h2>
+            <h2 className={`card-title leading-7 ${compact ? "text-lg" : "line-clamp-2"}`} title={article.title}><Link href={`/news/${encodeURIComponent(article.id)}`} className="hover:text-red-700 hover:underline focus-visible:outline-2 focus-visible:outline-red-700">{article.title}</Link></h2>
             {showDescription && <CardDescription key={article.description} description={article.description} />}
         </div>
     </div>

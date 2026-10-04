@@ -24,17 +24,17 @@ const CardDescription = ({ description }: CardDescriptionProps) => {
     }, [description]);
 
     return (
-        <div className="mt-auto">
+        <div>
             <p
                 id={descriptionId}
                 ref={textRef}
                 tabIndex={expanded ? 0 : undefined}
-                className={`h-24 leading-6 ${expanded ? "overflow-y-auto" : "line-clamp-4 overflow-hidden"}`}
+                className={`leading-6 ${expanded ? "h-24 overflow-y-auto" : "line-clamp-4 max-h-24 overflow-hidden"}`}
             >
                 {description}
             </p>
-            <div className="mt-2 h-6">
-                {hasOverflow && (
+            {hasOverflow && (
+                <div className="mt-2">
                     <button
                         type="button"
                         aria-expanded={expanded}
@@ -44,8 +44,8 @@ const CardDescription = ({ description }: CardDescriptionProps) => {
                     >
                         {expanded ? "কম দেখুন" : "আরও দেখুন"}
                     </button>
-                )}
-            </div>
+                </div>
+            )}
         </div>
     );
 };

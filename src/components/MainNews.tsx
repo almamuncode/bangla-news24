@@ -15,6 +15,7 @@ const MainNews = ({ news }: MainNewsProps) => {
 
     return (
         <div className="main-news-container grid grid-cols-1 items-stretch gap-5 md:grid-cols-2">
+            <div className="min-w-0 self-start">
             <Card
                 article={{
                     ...firstNews,
@@ -22,7 +23,8 @@ const MainNews = ({ news }: MainNewsProps) => {
                 }}
                 loading="eager"
             />
-            <div className="other-news grid min-w-0 auto-rows-fr gap-4">
+            </div>
+            <div className="other-news grid min-w-0 content-start gap-4 self-start">
                 {otherNews.slice(0, 4).map((article) => (
                     <Card key={article.id} article={article} showImage={false} showDescription={false} />
                 ))}
