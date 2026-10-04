@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type Category = {
     slug: string;
     title: string;
@@ -22,19 +24,21 @@ const Navlinks = async () => {
 
     const response: CategoriesResponse = await res.json();
     const navlinks = response.data;
+    const filerNews = navlinks.filter(link => link.scrapable);
 
     if (!response.success || !navlinks?.length) {
         return null;
     }
 
     return (
-        <nav aria-label="সংবাদ বিভাগ" className="container mx-auto flex flex-wrap justify-center gap-x-6 gap-y-2 px-4 py-3">
-           {navlinks.map((link) => (
-               <a key={link.slug} href={link.url} className="font-medium hover:text-red-700">
-                   {link.title}
-               </a>
-           ))}
-        </nav>
+        <div className="navlinks flex flex-wrap gap-4 justify-center">
+            <Link href={"/"}>হোম</Link>
+            {filerNews.map((link, index) => (
+                <Link key={index} href={`/category/${link.slug}`}>
+                    {link.title}
+                </Link>
+            ))}
+        </div>
     );
 };
 

@@ -16,7 +16,7 @@ const MostRead = ({mostRead}: MostReadProps) => {
             <ul>
                 {mostRead.map((article, index) => (
                     <li key={index} className="mb-2">
-                        <div className="text-lg"><span className="text-red-700 mr-2">{index + 1}.</span> <span>{article.title}</span></div>
+                        <div className="text-lg flex items-start gap-2"><span className="text-red-700 shrink-0">{index + 1}.</span><span className="text-left">{article.title}</span></div>
                     </li>
                 ))}
             </ul>

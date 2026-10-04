@@ -3,6 +3,7 @@ export type NewsArticle = {
     description: string;
     category: string;
     imageUrl?: string | null;
+    firstPublished?: string | null;
 };
 
 export type NewsSection = {

@@ -9,12 +9,12 @@ const Marquee = async () => {
     const headlines = data.data;
 
     return (
-        <div className="bg-red-700 text-white">
+        <div className="bg-red-700 text-white my-4">
             <div className="container mx-auto flex items-center">
                 <div className="font-bold py-2 bg-red-800 px-2">সর্বশেষ</div>
                 <MarqueeText direction="right" duration={15}>
                     {headlines.map((headline, index) => (
-                        <span key={index}><span>{headline.title}</span>
+                        <span key={index}><span className="font-bold">{headline.title}</span>
                             <span className="mx-2"> ● </span></span>
                     ))}
                 </MarqueeText>

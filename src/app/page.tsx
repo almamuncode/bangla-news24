@@ -1,7 +1,6 @@
 // import { Main } from "next/document";
 import MainNews from "../components/MainNews";
 import type { NewsSectionsResponse } from "@/types/news";
-import Marquee from "../components/Marquee";
 import MostRead from "../components/MostRead";
 import SelectedNews from "../components/SelectedNews";
 
@@ -22,7 +21,6 @@ export default async function Home() {
 
   return (
     <div>
-      <Marquee />
       <div className="container mx-auto grid grid-cols-3 gap-4 my-5">
         {/* News */}
         <div className="col-span-2">
