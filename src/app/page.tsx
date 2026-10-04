@@ -28,14 +28,14 @@ export default async function Home() {
 
   return (
     <div>
-      <div className="container mx-auto grid grid-cols-3 gap-4 my-5">
+      <div className="container mx-auto my-5 grid grid-cols-1 gap-6 px-4 sm:px-6 lg:grid-cols-3">
         {/* News */}
-        <div className="col-span-2">
+        <div className="min-w-0 lg:col-span-2">
           <MainNews news={mainNews} />
           <div className= "grid gap-5 mt-5">
             {selected.map((section, index) => (
               <div key={index}> <h1 className="text-xl font-bold mb-4">{section.title}</h1>
-              <div className="grid grid-cols-3 gap-5">
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
                 {section.articles.map((selected, articleIndex) => (
                 <SelectedNews key={articleIndex} selected={selected} />
               ))}
@@ -47,7 +47,7 @@ export default async function Home() {
 
 
         {/* Most Read */}
-        <div className="col-span-1">
+        <div className="min-w-0 lg:col-span-1">
           <MostRead mostRead={mostRead} />
         </div>
       </div>

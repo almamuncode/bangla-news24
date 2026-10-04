@@ -31,14 +31,14 @@ const Navlinks = async () => {
     }
 
     return (
-        <div className="navlinks flex flex-wrap gap-4 justify-center">
+        <nav aria-label="সংবাদ বিভাগ" className="navlinks container mx-auto flex flex-wrap justify-center gap-x-4 gap-y-2 px-4 py-2 text-sm sm:text-base [&>a]:py-2 [&>a]:hover:text-red-700">
             <Link href={"/"}>হোম</Link>
             {filerNews.map((link, index) => (
                 <Link key={index} href={`/category/${link.slug}`}>
                     {link.title}
                 </Link>
             ))}
-        </div>
+        </nav>
     );
 };
 
