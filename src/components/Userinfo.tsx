@@ -36,10 +36,19 @@ const Userinfo = () => {
                 <span role="status" className="text-sm text-gray-500">অপেক্ষা করুন…</span>
             ) : session?.user ? (
                 <>
-                    <span className="max-w-48 truncate text-sm font-semibold text-gray-700" title={session.user.name}>{session.user.name}</span>
-                    <button type="button" onClick={handleSignOut} disabled={isSigningOut} className="btn bg-red-700 text-white hover:bg-red-800 disabled:opacity-60">
+                    <details className="group relative">
+                        <summary className="btn list-none border-red-700/20 bg-red-50 text-red-700 [&::-webkit-details-marker]:hidden">
+                            <span className="max-w-40 truncate" title={session.user.name}>{session.user.name}</span>
+                            <span aria-hidden="true" className="transition group-open:rotate-180">⌄</span>
+                        </summary>
+                        <div className="absolute right-0 z-50 mt-2 w-52 rounded-xl border border-gray-200 bg-white p-2 shadow-lg">
+                            <Link href="/saved-news" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")} className="block rounded-lg px-4 py-3 text-sm hover:bg-red-50 hover:text-red-700">সংরক্ষিত সংবাদ</Link>
+                            <Link href="/profile" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")} className="block rounded-lg px-4 py-3 text-sm hover:bg-red-50 hover:text-red-700">প্রোফাইল</Link>
+                    <button type="button" onClick={handleSignOut} disabled={isSigningOut} className="mt-1 w-full rounded-lg border-t border-gray-100 px-4 py-3 text-left text-sm text-red-700 hover:bg-red-50 disabled:opacity-60">
                         {isSigningOut ? "অপেক্ষা করুন…" : "সাইন আউট"}
                     </button>
+                        </div>
+                    </details>
                     {signOutError && <p role="alert" className="w-full text-center text-xs text-red-700">{signOutError}</p>}
                 </>
             ) : error ? (

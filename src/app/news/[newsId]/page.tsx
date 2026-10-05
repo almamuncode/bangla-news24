@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SaveNewsButton from "@/components/SaveNewsButton";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -119,6 +120,7 @@ const NewsDetails = async ({ params }: { params: Promise<{ newsId: string }> }) 
                         ))}
                     </div>
                     <h1 className="text-3xl font-bold leading-snug tracking-tight sm:text-4xl lg:text-5xl">{article.title}</h1>
+                    <div className="mt-5"><SaveNewsButton articleId={newsId} /></div>
                     {description && <p className="mt-5 whitespace-pre-line text-lg leading-8 text-base-content/70 sm:text-xl sm:leading-9">{description}</p>}
 
                     <div className="mt-6 flex flex-wrap items-start justify-between gap-4 border-y border-base-content/10 py-4">
