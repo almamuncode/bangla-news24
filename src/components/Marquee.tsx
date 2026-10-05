@@ -5,7 +5,7 @@ import "react-marquee-text/dist/styles.css"
 import type { NewsResponse } from "@/types/news";
 
 const Marquee = async () => {
-    const res = await fetch("https://news-api-v2.vercel.app/api/news?limit=10")
+    const res = await fetch("https://news-api-v2.vercel.app/api/news?limit=10", { cache: "no-store" })
     const data: NewsResponse = await res.json()
     const headlines = data.data;
 

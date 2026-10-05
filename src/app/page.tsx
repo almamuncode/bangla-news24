@@ -14,9 +14,8 @@ const hiddenSections = new Set([
 
 
 export default async function Home() {
-  const res = await fetch("https://news-api-v2.vercel.app/api/news/sections");
+  const res = await fetch("https://news-api-v2.vercel.app/api/news/sections", { cache: "no-store" });
   const data: NewsSectionsResponse = await res.json();
-  console.log(data);
   const sections = data.data.filter(
     (section) => !hiddenSections.has(section.title.normalize("NFC").trim()),
   );
@@ -24,7 +23,6 @@ export default async function Home() {
   const mostRead = sections[1]?.articles ?? [];
   const selected = sections.slice(1) ?? [];
 
-  console.log(selected);
 
   return (
     <div>

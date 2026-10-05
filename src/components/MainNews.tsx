@@ -17,10 +17,7 @@ const MainNews = ({ news }: MainNewsProps) => {
         <div className="main-news-container grid grid-cols-1 items-stretch gap-5 md:grid-cols-2">
             <div className="min-w-0 self-start">
             <Card
-                article={{
-                    ...firstNews,
-                    imageUrl: "https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/501a/live/027926c0-bf27-11f1-b10d-f956452c9061.jpg.webp",
-                }}
+                article={firstNews}
                 loading="eager"
             />
             </div>

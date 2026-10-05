@@ -82,7 +82,7 @@ const ArticleImage = ({ image, title, lead = false }: { image: ImageBlock; title
 
 const NewsDetails = async ({ params }: { params: Promise<{ newsId: string }> }) => {
     const { newsId } = await params;
-    const res = await fetch(`https://news-api-v2.vercel.app/api/article/${encodeURIComponent(newsId)}`);
+    const res = await fetch(`https://news-api-v2.vercel.app/api/article/${encodeURIComponent(newsId)}`, { cache: "no-store" });
     if (res.status === 404) notFound();
     if (!res.ok) throw new Error("Unable to load article");
 

@@ -3,7 +3,8 @@ import Image from "next/image";
 const Header = () => {
 
     const date = new Date().toLocaleDateString("bn-bd", {
-        dateStyle: "full"
+        dateStyle: "full",
+        timeZone: "Asia/Dhaka"
     });
 
 

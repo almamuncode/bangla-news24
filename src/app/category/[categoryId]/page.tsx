@@ -10,7 +10,7 @@ type CategoryResponse = {
 const CategoryPage = async ({ params }: { params: Promise<{ categoryId: string }> }) => {
 
     const { categoryId } = await params;
-    const res = await fetch(`https://news-api-v2.vercel.app/api/category/${categoryId}`);
+    const res = await fetch(`https://news-api-v2.vercel.app/api/category/${categoryId}`, { cache: "no-store" });
     const data: CategoryResponse = await res.json();
 
     const category = data.data;

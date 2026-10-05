@@ -16,7 +16,7 @@ type CategoriesResponse = {
 };
 
 const Navlinks = async () => {
-    const res = await fetch("https://news-api-v2.vercel.app/api/categories");
+    const res = await fetch("https://news-api-v2.vercel.app/api/categories", { cache: "no-store" });
 
     if (!res.ok) {
         return null;
