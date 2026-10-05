@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Userinfo from "./Userinfo";
 
 const Header = () => {
 
@@ -22,10 +23,7 @@ const Header = () => {
                     <div className="mt-1 text-xs sm:text-sm">{date}</div>
                 </div>
             </div>
-            <div className="flex justify-self-center gap-2 lg:col-start-3 lg:justify-self-end">
-                <button className="btn">সাইন ইন</button>
-                <button className="btn bg-red-700 text-white">সাইন আপ</button>
-            </div>
+            <Userinfo></Userinfo>
             
         </div>
     );
